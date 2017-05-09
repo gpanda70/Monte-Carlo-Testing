@@ -1,4 +1,4 @@
-function [  ] = MarkovChain( delta, lambda1, lambda2, iter, dist )
+function [  ] = MarkovChain( delta, lambda1, lambda2, iter, maxD )
 %MARKOVCHAIN prints a graph representing a markov chain where lambda1 and
 %lambda2 are the lambda values of the Markov Generation matrix 
 %[-λ1,λ1; λ2,-λ2], the larger the |λ1| value is the more it hits 2 the
@@ -12,7 +12,7 @@ function [  ] = MarkovChain( delta, lambda1, lambda2, iter, dist )
 %use delta as .01, iter as 1, dist as 5, λ1 as 6 and λ2 as 10
 
 
-alpha=zeros(1,dist/delta); %creates a vector of alpha
+alpha=zeros(1,maxD/delta); %creates a vector of alpha
 
 %loop to print iter # of paths
 for j=1:iter
@@ -21,7 +21,7 @@ for j=1:iter
     
     %this loop checks what previous alpha value is then gives a value to
     %the current one based on the previous values
-    for i = 1:5/delta
+    for i = 1:maxD/delta
      u=rand(); %uniform random variable
         if alpha(i)==1
             if u<=1-(delta*lambda1)
@@ -38,11 +38,11 @@ for j=1:iter
         end
 
     end
-    x=0:delta:5;
+    x=0:delta:maxD;
 
 %graph 
 figure
 stairs(x,alpha,'r')
 
-axis([0 5   0.5 2.5])
+axis([0 maxD   0.5 2.5])
 end
