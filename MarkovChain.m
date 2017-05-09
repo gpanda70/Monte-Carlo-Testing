@@ -10,6 +10,7 @@ function [  ] = MarkovChain( delta, lambda1, lambda2, iter, maxD )
 
 %for testing purposes
 %use delta as .01, iter as 1, dist as 5, λ1 as 6 and λ2 as 10
+%so run MarkovChain(.01,6,10,1,5)
 
 
 alpha=zeros(1,maxD/delta); %creates a vector of alpha
